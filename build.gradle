@@ -22,8 +22,8 @@ apply plugin: 'java'
 apply plugin: 'org.jetbrains.intellij'
 
 compileJava {
-    sourceCompatibility = '11'
-    targetCompatibility = '11'
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
 }
 
 intellij {
@@ -108,13 +108,14 @@ publishing {
 }
 
 signing {
-    afterEvaluate { project ->
+    required { false }
+    /*afterEvaluate { project ->
         required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
         def signingKey = findProperty("signingKey")
         def signingPassword = findProperty("signingPassword")
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications.maven
-    }
+    }*/
 }
 
 javadoc {
